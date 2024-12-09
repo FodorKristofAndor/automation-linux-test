@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: convert_nunit_to_junit.sh fullresult.xml fullresult_junit.xml
+        run: .github/workflows/convert_nunit_to_junit.sh .github/workflows/fullresult.xml fullresult_junit.xml
