@@ -32,7 +32,7 @@ jobs:
           sudo apt-get install -y powershell
 
       - name: Run a one-line script
-        run: chmod 775 .github/workflows/convert_nunit_to_junit.sh
+        run: chmod 775 .github/workflows/convert_nunit_to_junit.ps1
         
       # Runs a single command using the runners shell
       - name: Run a one-line script
