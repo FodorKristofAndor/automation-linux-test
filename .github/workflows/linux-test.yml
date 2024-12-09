@@ -25,15 +25,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Step 2: Install XMLStarlet
-      - name: Install XMLStarlet
-        run: sudo apt-get update && sudo apt-get install -y xmlstarlet
-        
+      # Step 2: Install PowerShell
+      - name: Install PowerShell
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y powershell
+
       - name: Run a one-line script
         run: chmod 775 .github/workflows/convert_nunit_to_junit.sh
+        
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: .github/workflows/convert_nunit_to_junit.sh .github/workflows/fullresult.xml fullresult_junit.xml
+        run: pwsh .github/workflows/convert_nunit_to_junit.ps1 .github/workflows/fullresult.xml fullresult_junit.xml
 
       # Step 4: Upload All Files in Workspace
       - name: Upload All Workspace Files
