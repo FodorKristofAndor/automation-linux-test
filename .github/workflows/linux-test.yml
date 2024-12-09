@@ -35,9 +35,9 @@ jobs:
       - name: Run a one-line script
         run: .github/workflows/convert_nunit_to_junit.sh .github/workflows/fullresult.xml fullresult_junit.xml
 
-              # Step 5: Upload all artifacts
-      - name: Upload Artifacts
+      # Step 4: Upload All Files in Workspace
+      - name: Upload All Workspace Files
         uses: actions/upload-artifact@v3
         with:
-          name: processed-files
-          path: processed_files/
+          name: all-workspace-files
+          path: ./
