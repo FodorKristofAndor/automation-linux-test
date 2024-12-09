@@ -25,8 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      # Step 2: Install XMLStarlet
+      - name: Install XMLStarlet
+        run: sudo apt-get update && sudo apt-get install -y xmlstarlet
+        
       - name: Run a one-line script
         run: chmod 775 .github/workflows/convert_nunit_to_junit.sh
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: .github/workflows/convert_nunit_to_junit.sh .github/workflows/fullresult.xml fullresult_junit.xml
+
+              # Step 5: Upload all artifacts
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-files
+          path: processed_files/
