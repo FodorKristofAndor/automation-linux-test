@@ -27,7 +27,8 @@ jobs:
 
       - name: set proxy
         run: |
-          setx HTTP_PROXY http://admin:12Budapest99@10.228.120.200:3128
+          set HTTP_PROXY http://admin:12Budapest99@10.228.120.200:3128
+          set HTTPS_PROXY http://admin:12Budapest99@10.228.120.200:3128
 
       - name: Verify proxy connection
         run: |
