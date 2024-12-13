@@ -18,29 +18,19 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Step 2: Install PowerShell
-      - name: Install PowerShell
+      - name: set proxy
         run: |
-          sudo apt-get update
-          sudo apt-get install -y powershell
+          setx HTTP_PROXY http://admin:12Budapest99@10.228.120.200:3128
 
-      - name: Run a one-line script
-        run: chmod 775 .github/workflows/convert_nunit_to_junit.ps1
-        
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: pwsh .github/workflows/convert_nunit_to_junit.ps1 .github/workflows/fullresult.xml fullresult_junit.xml
+      - name: Verify proxy connection
+        run: |
+          echo %HTTP_PROXY%
+          curl -I http://example.com
 
-      # Step 4: Upload All Files in Workspace
-      - name: Upload All Workspace Files
-        uses: actions/upload-artifact@v3
-        with:
-          name: all-workspace-files
-          path: ./
