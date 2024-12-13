@@ -32,5 +32,5 @@ jobs:
       - name: Verify proxy connection
         run: |
           echo %HTTP_PROXY%
-          curl -I http://example.com
+          curl https://ifconfig.me
 
